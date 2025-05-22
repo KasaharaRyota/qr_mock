@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react"
 import { Box, TextField } from "@mui/material"
 
 function App() {
-	const [baseName, setBaseName] = useState();
-	const [companyName, setCompanyName] = useState();
-	const [carNumber, setCarNumber] = useState();
+	const [baseName, setBaseName] = useState("");
+	const [companyName, setCompanyName] = useState("");
+	const [carNumber, setCarNumber] = useState("");
 
 	useEffect(() => {
 		const params = new URLSearchParams(window.location.search);
