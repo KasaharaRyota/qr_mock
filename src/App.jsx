@@ -9,22 +9,22 @@ function App() {
 	useEffect(() => {
 		const params = new URLSearchParams(window.location.search);
 
-		setBaseName(params.get('baseName'));
-		setCompanyName(params.get('companyName'));
-		setCarNumber(params.get('carNumber'));
+		setBaseName(params.get('baseName') || "");
+		setCompanyName(params.get('companyName') || "");
+		setCarNumber(params.get('carNumber') || "");
 	}, []);
 
 	return (
 		<>
 			<Box sx={{ width: "80%", mt: 5, mx: "auto" }}>
 				<Box>
-					<TextField label="拠点名" variant="outlined" size="small" defaultValue={ baseName } />
+					<TextField label="拠点名" variant="outlined" size="small" value={ baseName } />
 				</Box>
 				<Box sx={{ mt: 2 }}>
-					<TextField label="会社名" variant="outlined" size="small" defaultValue={ companyName } />
+					<TextField label="会社名" variant="outlined" size="small" value={ companyName } />
 				</Box>
 				<Box sx={{ mt: 2 }}>
-					<TextField label="車番号" variant="outlined" size="small" defaultValue={ carNumber } />
+					<TextField label="車番号" variant="outlined" size="small" value={ carNumber } />
 				</Box>
 			</Box>
 		</>
