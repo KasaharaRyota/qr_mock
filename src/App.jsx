@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react"
+import { Box, TextField } from "@mui/material"
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [baseName, setBaseName] = useState();
+	const [companyName, setCompanyName] = useState();
+	const [carNumber, setCarNumber] = useState();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	useEffect(() => {
+		const params = new URLSearchParams(window.location.search);
+
+		setBaseName(params.get('baseName'));
+		setCompanyName(params.get('companyName'));
+		setCarNumber(params.get('carNumber'));
+	}, []);
+
+	return (
+		<>
+			<Box sx={{ width: "80%", mt: 5, mx: "auto" }}>
+				<Box>
+					<TextField label="拠点名" variant="outlined" size="small" defaultValue={ baseName } />
+				</Box>
+				<Box sx={{ mt: 2 }}>
+					<TextField label="会社名" variant="outlined" size="small" defaultValue={ companyName } />
+				</Box>
+				<Box sx={{ mt: 2 }}>
+					<TextField label="車番号" variant="outlined" size="small" defaultValue={ carNumber } />
+				</Box>
+			</Box>
+		</>
+	)
 }
 
 export default App
